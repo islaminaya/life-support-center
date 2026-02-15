@@ -14,6 +14,9 @@ final readonly class CreateCourseAction
      */
     public function handle(CourseData $data): Course
     {
-        return Course::query()->create($data->toArray());
+        /** @var array<string, mixed> $attributes */
+        $attributes = $data->toArray();
+
+        return Course::query()->create($attributes);
     }
 }

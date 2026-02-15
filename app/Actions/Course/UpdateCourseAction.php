@@ -14,10 +14,10 @@ final readonly class UpdateCourseAction
      */
     public function handle(Course $course, CourseData $data): Course
     {
-        $course->update(
-            array_merge($data->toArray(),
-                ['updated_by' => auth()->id()])
-        );
+        /** @var array<string, mixed> $attributes */
+        $attributes = $data->toArray();
+
+        $course->update($attributes);
 
         return $course;
     }

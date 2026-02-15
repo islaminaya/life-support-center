@@ -48,7 +48,11 @@ final class CourseController extends Controller
     {
         $this->authorize('create', Course::class);
 
-        $action->handle(CourseData::fromArray($request->validated()));
+        $data = $request->validated();
+
+        $data['created_by'] = auth()->id();
+
+        $action->handle(CourseData::from($data));
 
         return to_route('courses.index')->with(['success' => 'Course saved successfully']);
 
@@ -85,7 +89,11 @@ final class CourseController extends Controller
     {
         $this->authorize('update', $course);
 
-        $action->handle($course, CourseData::fromArray($request->validated()));
+        $data = $request->validated();
+
+        $data['updated_by'] = auth()->id();
+
+        $action->handle($course, CourseData::from($data));
 
         return to_route('courses.index')->with(['success' => 'Course Updated successfully']);
 
