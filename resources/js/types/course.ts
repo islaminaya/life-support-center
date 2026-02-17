@@ -7,4 +7,15 @@ export type Course = {
     visibility: string;
     created_by?: User | null;
     updated_by?: User | null;
+    batches: Batch[];
+};
+
+export type Batch = {
+    id: number;
+    name: string;
+    start_date: string;
+    start_time: string;
+    end_time: string;
+    course_id: number;
+    visibility: string;
 };

@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\BatchCourseController;
 use App\Http\Controllers\CourseController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -19,6 +20,7 @@ Route::middleware(['auth', 'admin'])->group(function (): void {
         ->name('dashboard');
 
     Route::resource('courses', CourseController::class);
+    Route::post('courses/{course}/batches', [BatchCourseController::class, 'store'])->name('courses.batches.store');
 });
 
 Route::middleware(['auth'])->group(function (): void {

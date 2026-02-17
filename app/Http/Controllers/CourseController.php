@@ -65,8 +65,10 @@ final class CourseController extends Controller
     {
         $this->authorize('view', $course);
 
+        $course->load('batches');
+
         return inertia('courses/show', [
-            'course' => $course,
+            'course' => CourseData::from($course),
         ]);
     }
 

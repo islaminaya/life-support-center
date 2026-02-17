@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
@@ -23,4 +24,12 @@ final class Course extends Model
         'created_by',
         'updated_by',
     ];
+
+    /**
+     * @return HasMany<Batch, $this>
+     */
+    public function batches(): HasMany
+    {
+        return $this->hasMany(Batch::class)->latest('start_date');
+    }
 }

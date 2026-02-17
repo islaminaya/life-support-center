@@ -11,7 +11,7 @@ import {
     EmptyHeader,
     EmptyMedia,
     EmptyTitle,
-} from "@/components/ui/empty";
+} from '@/components/ui/empty';
 import AppLayout from '@/layouts/admin-layout';
 import courses from '@/routes/courses';
 import type { BreadcrumbItem, Course } from '@/types';
@@ -56,7 +56,7 @@ export default function Index({ courses }: { courses: { data: Course[] } }) {
                 </Link>
             </div>
             {courses.data.length === 0 && (
-                <section className='mx-auto'>
+                <section className="mx-auto">
                     <Empty>
                         <EmptyHeader>
                             <EmptyMedia variant="icon">
@@ -64,8 +64,8 @@ export default function Index({ courses }: { courses: { data: Course[] } }) {
                             </EmptyMedia>
                             <EmptyTitle>No Courses Yet</EmptyTitle>
                             <EmptyDescription>
-                                You haven&apos;t created any courses yet. Get started by creating
-                                your first course.
+                                You haven&apos;t created any courses yet. Get
+                                started by creating your first course.
                             </EmptyDescription>
                         </EmptyHeader>
                         <EmptyContent className="flex-row justify-center gap-2">

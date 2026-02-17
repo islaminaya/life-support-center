@@ -1,9 +1,5 @@
 import { Form, Head } from '@inertiajs/react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import AppLayout from '@/layouts/admin-layout';
-import courses from '@/routes/courses';
 import {
     Field,
     FieldContent,
@@ -11,6 +7,10 @@ import {
     FieldLabel,
     FieldTitle,
 } from '@/components/ui/field';
+import { Input } from '@/components/ui/input';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import AppLayout from '@/layouts/admin-layout';
+import courses from '@/routes/courses';
 
 export default function Create() {
     return (

@@ -70,7 +70,11 @@
         "test": [
             "@php artisan config:clear --ansi",
             "@test:lint",
-            "@php artisan test"
+            "@php artisan test",
+            "./vendor/bin/phpstan",
+            "./vendor/bin/rector",
+            "npm run lint",
+            "npm run format"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
