@@ -18,4 +18,6 @@ export type Batch = {
     end_time: string;
     course_id: number;
     visibility: string;
+    course: Course;
+    users: User[];
 };

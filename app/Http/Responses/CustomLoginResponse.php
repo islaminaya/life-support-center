@@ -13,7 +13,7 @@ final class CustomLoginResponse implements LoginResponse
     {
 
         if ($request->user()?->is_admin) {
-            return redirect(route('dashboard'));
+            return redirect(route('courses.index'));
         }
 
         return redirect(route('main'));

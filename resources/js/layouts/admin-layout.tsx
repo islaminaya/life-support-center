@@ -3,6 +3,6 @@ import type { AppLayoutProps } from '@/types';
 
 export default ({ children, breadcrumbs, ...props }: AppLayoutProps) => (
     <AppLayoutTemplate breadcrumbs={breadcrumbs} {...props}>
-        {children}
+        <section className="p-4">{children}</section>
     </AppLayoutTemplate>
 );

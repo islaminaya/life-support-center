@@ -11,20 +11,18 @@ use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
 use App\Models\Course;
 use App\Queries\Course\GetAllCoursesQuery;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Gate;
 use Inertia\Response;
 
 final class CourseController extends Controller
 {
-    use AuthorizesRequests;
-
     /**
      * Display a listing of the resource.
      */
     public function index(GetAllCoursesQuery $query): Response
     {
-        $this->authorize('viewAny', Course::class);
+        Gate::authorize('viewAny', Course::class);
 
         return inertia('courses/index', [
             'courses' => $query->handle(),
@@ -36,7 +34,7 @@ final class CourseController extends Controller
      */
     public function create(): Response
     {
-        $this->authorize('create', Course::class);
+        Gate::authorize('create', Course::class);
 
         return inertia('courses/create');
     }
@@ -46,7 +44,7 @@ final class CourseController extends Controller
      */
     public function store(StoreCourseRequest $request, CreateCourseAction $action): RedirectResponse
     {
-        $this->authorize('create', Course::class);
+        Gate::authorize('create', Course::class);
 
         $data = $request->validated();
 
@@ -63,9 +61,9 @@ final class CourseController extends Controller
      */
     public function show(Course $course): Response
     {
-        $this->authorize('view', $course);
+        Gate::authorize('view', $course);
 
-        $course->load('batches');
+        $course->load(['batches']);
 
         return inertia('courses/show', [
             'course' => CourseData::from($course),
@@ -77,7 +75,7 @@ final class CourseController extends Controller
      */
     public function edit(Course $course): Response
     {
-        $this->authorize('update', $course);
+        Gate::authorize('update', $course);
 
         return inertia('courses/edit', [
             'course' => $course,
@@ -89,7 +87,7 @@ final class CourseController extends Controller
      */
     public function update(UpdateCourseRequest $request, Course $course, UpdateCourseAction $action): RedirectResponse
     {
-        $this->authorize('update', $course);
+        Gate::authorize('update', $course);
 
         $data = $request->validated();
 

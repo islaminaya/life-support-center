@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -40,6 +41,19 @@ final class User extends Authenticatable
         'two_factor_recovery_codes',
         'remember_token',
     ];
+
+    /**
+     * @return BelongsToMany<Batch, $this, \Illuminate\Database\Eloquent\Relations\Pivot>
+     */
+    public function batches(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            Batch::class,
+            'registrations',
+            'user_id',
+            'batch_id',
+        );
+    }
 
     /**
      * Get the attributes that should be cast.

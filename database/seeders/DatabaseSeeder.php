@@ -19,6 +19,7 @@ final class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CourseSeeder::class,
             BatchSeeder::class,
+            RegistrationSeeder::class,
         ]);
     }
 }
