@@ -1,7 +1,7 @@
 import type { User } from './auth';
 
 export type Course = {
-    id: number;
+    id: string;
     name: string;
     image_url?: string;
     visibility: string;
@@ -11,12 +11,12 @@ export type Course = {
 };
 
 export type Batch = {
-    id: number;
+    id: string;
     name: string;
     start_date: string;
     start_time: string;
     end_time: string;
-    course_id: number;
+    course_id: string;
     visibility: string;
     course: Course;
     users: User[];

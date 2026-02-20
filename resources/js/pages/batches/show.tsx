@@ -1,7 +1,5 @@
-import AppLayout from '@/layouts/admin-layout';
-import type { Batch, BreadcrumbItem, Course } from '@/types';
-
 import { Head } from '@inertiajs/react';
+import { FolderUp } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 import {
@@ -11,8 +9,6 @@ import {
     EmptyMedia,
     EmptyTitle,
 } from '@/components/ui/empty';
-import { FolderUp } from 'lucide-react';
-import moment from 'moment';
 import {
     Table,
     TableBody,
@@ -21,14 +17,11 @@ import {
     TableHeader,
     TableRow,
 } from '@/components/ui/table';
+import AppLayout from '@/layouts/admin-layout';
 import courses from '@/routes/courses';
-import batches from '@/routes/batches';
-
-
+import type { Batch, BreadcrumbItem } from '@/types';
 
 export default function Show({ batch }: { batch: Batch }) {
-    const start_date = moment(batch.start_date);
-
     const breadcrumbs: BreadcrumbItem[] = [
         {
             title: 'Courses',

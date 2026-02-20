@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import { GraduationCap, LayoutGrid } from 'lucide-react';
+import { GraduationCap } from 'lucide-react';
 import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
 import {

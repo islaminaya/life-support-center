@@ -7,6 +7,7 @@ namespace Database\Factories;
 use App\Enum\Visibility;
 use App\Models\Course;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Batch>
@@ -24,6 +25,7 @@ final class BatchFactory extends Factory
         $course = Course::query()->inRandomOrder()->first();
 
         return [
+            'id' => Str::uuid(),
             'course_id' => $course->id,
             'name' => fake()->unique()->word().time(),
             'start_date' => fake()->dateTimeBetween('-1 week', '+1 week')->format('Y-m-d'),

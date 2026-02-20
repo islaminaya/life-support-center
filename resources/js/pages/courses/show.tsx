@@ -1,7 +1,7 @@
-import { Form, Head, Link, usePage } from '@inertiajs/react';
-import { CalendarIcon, Eye, FolderUp, PlusCircle } from 'lucide-react';
+import { Head, Link, usePage } from '@inertiajs/react';
+import { Eye, FolderUp, PlusCircle } from 'lucide-react';
 import moment from 'moment';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Swal from 'sweetalert2';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -23,10 +23,10 @@ import {
     TableRow,
 } from '@/components/ui/table';
 import AppLayout from '@/layouts/admin-layout';
-import type { BreadcrumbItem, Course } from '@/types';
-import type { PageProps } from '@/types/common';
 import batches from '@/routes/batches';
 import courses from '@/routes/courses';
+import type { BreadcrumbItem, Course } from '@/types';
+import type { PageProps } from '@/types/common';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -38,7 +38,6 @@ const breadcrumbs: BreadcrumbItem[] = [
         href: courses.index().url,
     },
 ];
-
 
 export default function Show({ course }: { course: Course }) {
     const { flash } = usePage<PageProps>().props;
@@ -126,7 +125,7 @@ export default function Show({ course }: { course: Course }) {
                                     return (
                                         <TableRow key={batch.name}>
                                             <TableCell className="font-medium">
-                                                {batch.name}
+                                                {batch.id}
                                             </TableCell>
                                             <TableCell>
                                                 {moment(

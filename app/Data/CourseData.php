@@ -11,7 +11,7 @@ use Spatie\LaravelData\Optional;
 final class CourseData extends Data
 {
     public function __construct(
-        public Optional|int $id,
+        public Optional|string $id,
 
         public Optional|string|null $name,
 

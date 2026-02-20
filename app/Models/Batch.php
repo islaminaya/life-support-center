@@ -8,11 +8,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Str;
 
 final class Batch extends Model
 {
     /** @use HasFactory<\Database\Factories\BatchFactory> */
     use HasFactory;
+
+    public $incrementing = false;
+
+    protected $keyType = 'string';
 
     protected $fillable = [
         'course_id',
@@ -44,5 +49,14 @@ final class Batch extends Model
             'batch_id',
             'user_id',
         );
+    }
+
+    protected static function booted(): void
+    {
+        self::creating(function (Batch $batch): void {
+            if (! $batch->id) {
+                $batch->id = (string) Str::uuid();
+            }
+        });
     }
 }

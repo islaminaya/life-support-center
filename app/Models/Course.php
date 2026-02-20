@@ -6,9 +6,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Str;
 
 /**
- * @property int $id
+ * @property string $id
  * @property string $name
  * @property string $image_url
  * @property string $visibility
@@ -17,6 +18,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 final class Course extends Model
 {
+    public $incrementing = false;
+
+    protected $keyType = 'string';
+
     protected $fillable = [
         'name',
         'image_url',
@@ -31,5 +36,14 @@ final class Course extends Model
     public function batches(): HasMany
     {
         return $this->hasMany(Batch::class)->latest('start_date');
+    }
+
+    protected static function booted(): void
+    {
+        self::creating(function (Course $course): void {
+            if (! $course->id) {
+                $course->id = (string) Str::uuid();
+            }
+        });
     }
 }

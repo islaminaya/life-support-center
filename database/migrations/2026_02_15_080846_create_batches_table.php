@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Models\Course;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -16,9 +15,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('batches', function (Blueprint $table): void {
-            $table->id();
-            $table->foreignIdFor(Course::class)->constrained();
-            $table->string('name')->unique();
+            $table->uuid('id')->primary();
+            $table->uuid('course_id');
+            $table->string('name');
             $table->date('start_date');
             $table->time('start_time');
             $table->time('end_time');
@@ -26,6 +25,10 @@ return new class extends Migration
             $table->foreignIdFor(User::class, 'created_by')->nullable()->constrained();
             $table->foreignIdFor(User::class, 'updated_by')->nullable()->constrained();
             $table->timestamps();
+
+            $table->foreign('course_id')
+                ->references('id')
+                ->on('courses');
         });
     }
 

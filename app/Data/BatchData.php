@@ -11,8 +11,8 @@ use Spatie\LaravelData\Optional;
 final class BatchData extends Data
 {
     public function __construct(
-        public Optional|int $id,
-        public int $course_id,
+        public Optional|string $id,
+        public string $course_id,
         public Optional|string $name,
         public string $start_date,
         public string $start_time,

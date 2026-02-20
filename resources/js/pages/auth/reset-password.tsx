@@ -21,7 +21,8 @@ export default function ResetPassword({ token, email }: Props) {
             <Head title="Reset password" />
 
             <Form
-                {...update.form()}
+                accept={update().url}
+                method={update().method}
                 transform={(data) => ({ ...data, token, email })}
                 resetOnSuccess={['password', 'password_confirmation']}
             >

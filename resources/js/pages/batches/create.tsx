@@ -1,7 +1,8 @@
-import { Input } from '@/components/ui/input';
-import AppLayout from '@/layouts/admin-layout';
 import { Form, Head, usePage } from '@inertiajs/react';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { CalendarIcon } from 'lucide-react';
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Calendar } from '@/components/ui/calendar';
 import {
     Field,
     FieldContent,
@@ -10,27 +11,22 @@ import {
     FieldLabel,
     FieldTitle,
 } from '@/components/ui/field';
-
+import { Input } from '@/components/ui/input';
 import {
     InputGroup,
     InputGroupAddon,
     InputGroupButton,
     InputGroupInput,
 } from '@/components/ui/input-group';
-
 import {
     Popover,
     PopoverContent,
     PopoverTrigger,
 } from '@/components/ui/popover';
-
-import { Calendar } from '@/components/ui/calendar';
-import { CalendarIcon } from 'lucide-react';
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { PageProps } from '@/types/common';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import AppLayout from '@/layouts/admin-layout';
 import batches from '@/routes/batches';
-import type { Course } from '@/types';
+import type { PageProps } from '@/types/common';
 
 export default function Create() {
     function formatDate(date: Date | undefined) {
@@ -73,7 +69,7 @@ export default function Create() {
                     action={batches.store(course.id).url}
                     method={batches.store(course.id).method}
                 >
-                    {({ errors }) => (
+                    {() => (
                         <>
                             <input
                                 type="hidden"
